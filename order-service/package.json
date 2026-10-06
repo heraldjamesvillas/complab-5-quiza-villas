@@ -1,0 +1,13 @@
+{
+    "name": "order-service",
+    "version": "1.0.0",
+    "description": "Order service for the microservices shop system",
+    "main": "index.js",
+    "scripts": {
+      "start": "node index.js"
+    },
+    "dependencies": {
+      "amqplib": "^0.10.4",
+      "express": "^4.21.2"
+    }
+  }

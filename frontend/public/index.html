@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shop Microservices</title>
+    <style>
+        * { box-sizing: border-box; }
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: #f4f6f8;
+            color: #222;
+        }
+        header {
+            background: #2563eb;
+            color: white;
+            padding: 25px;
+            text-align: center;
+        }
+        main {
+            max-width: 900px;
+            margin: 30px auto;
+            padding: 20px;
+        }
+        .card {
+            background: white;
+            border-radius: 10px;
+            padding: 25px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 8px rgba(0,0,0,.08);
+        }
+        button {
+            background: #2563eb;
+            color: white;
+            border: 0;
+            padding: 12px 20px;
+            border-radius: 6px;
+            cursor: pointer;
+            margin: 5px;
+        }
+        button:hover { background: #1d4ed8; }
+        #result {
+            margin-top: 15px;
+            padding: 15px;
+            background: #f1f5f9;
+            border-radius: 6px;
+            white-space: pre-wrap;
+        }
+        .service {
+            display: inline-block;
+            padding: 10px 15px;
+            margin: 5px;
+            background: #dcfce7;
+            border-radius: 6px;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>Shop Microservices System</h1>
+    <p>Docker + API Gateway + RabbitMQ</p>
+</header>
+
+<main>
+
+    <div class="card">
+        <h2>Microservices</h2>
+        <span class="service">API Gateway</span>
+        <span class="service">Order Service</span>
+        <span class="service">Payment Service</span>
+        <span class="service">Inventory Service</span>
+        <span class="service">Notification Service</span>
+        <span class="service">RabbitMQ</span>
+    </div>
+
+    <div class="card">
+        <h2>Order Testing</h2>
+        <p>Use the button below to test the API Gateway.</p>
+
+        <button onclick="testAPI()">Test API Gateway</button>
+
+        <div id="result">Waiting for test...</div>
+    </div>
+
+</main>
+
+<script>
+async function testAPI() {
+    const result = document.getElementById("result");
+    result.textContent = "Testing API Gateway...";
+
+    try {
+        const response = await fetch("/api/");
+        const text = await response.text();
+
+        result.textContent =
+            "Status: " + response.status +
+            "\n\nResponse:\n" + text;
+
+    } catch (error) {
+        result.textContent =
+            "API connection failed.\n\n" + error;
+    }
+}
+</script>
+
+</body>
+</html>
